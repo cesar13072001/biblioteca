@@ -70,8 +70,8 @@ public class UsuarioServlet extends HttpServlet {
     	List<Usuario> usuario = new ArrayList<Usuario>();
     	
     	try {
-    		respuesta = new HashMap<String, Object>();
     		usuario = daoUsuario.listadoUsuario();
+    		respuesta = new HashMap<String, Object>();
     		respuesta.put("data", usuario);
     		
     	}catch (Exception e) {
@@ -175,24 +175,23 @@ public class UsuarioServlet extends HttpServlet {
     	if(correo.equals("")) {
     		correo = null;
     	}
+    	
+		Usuario usuario = new Usuario();
+		usuario.setIdUsuario(idUsuario);
+		usuario.setNombres(nombres);
+		usuario.setApellidos(apellidos);
+		usuario.setFechaNacimiento(nacimiento);
+		usuario.setEmail(correo);
+    	
     	DAOFactory daoFactory = DAOFactory.getDAOFactory(DAOFactory.MYSQL);
     	UsuarioDAO daoUsuario = daoFactory.getUsuarioDAO();
     		
     	HashMap<String, Object> respuesta = null;
     	
     	try {
-    		respuesta = new HashMap<String, Object>();
-    		Usuario usuario = new Usuario();
-    		usuario.setIdUsuario(idUsuario);
-    		usuario.setNombres(nombres);
-    		usuario.setApellidos(apellidos);
-    		usuario.setFechaNacimiento(nacimiento);
-    		usuario.setEmail(correo);
-    		
-        	
-
     		
     		int salida  = daoUsuario.editarUsuario(usuario);
+        	respuesta = new HashMap<String, Object>();
     		respuesta.put("resultado", salida);
     		
     	}catch (Exception e) {

@@ -8,7 +8,7 @@ public interface CategoriaDAO {
 
 	public List<Categoria> listadoCategoria();
 
-	public Categoria registrarCategoria(Categoria categoria);
+	public Categoria registrarCategoria(String categoria);
 
 	public Categoria buscarCategoria(int idCategoria);
 

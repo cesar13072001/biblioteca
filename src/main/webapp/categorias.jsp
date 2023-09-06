@@ -24,12 +24,59 @@
 </ol>
 
 
+<button type="button" class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+Registrar
+</button>
+	
+	
+<!-- Modal -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+	      <div class="modal-header">
+	        <h1 class="modal-title fs-5" id="tituloModal">Agregar categoría</h1>
+	      </div>
+	      <form class="needs-validation" id="formularioUsuario" novalidate action="javascript:accionFormulario()">
+	      	<div class="modal-body row g-3">
+	      
+	        	<input type="hidden" id="idCategoria" value="0">
+					<div class="col-12">
+						<label class="form-label" for="nombres">Nombres</label>
+						<input class="form-control" type="text" id="nombres" required>
+						<div class="invalid-feedback">
+			        	Ingrese un nombre
+			      		</div>
+					</div>	
+		    
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-secondary" id="btn_cerrar" data-bs-dismiss="modal">Cancelar</button>
+	        <button type="submit" class="btn btn-primary" id="btn_formulario">
+	        Registrar</button>   
+	      </div>
+	      </form>
+	    </div>
+	  </div>
+	</div>
+	
+
+
+<table class="table" id="tabla" style="width: 100%;">
+	<thead>
+		<tr style="width:100%">
+			<th>Id categoría</th>
+	        <th>Nombres</th>
+	        <th>Acción</th>
+	        <th></th>            
+	     </tr>
+	</thead>
+</table>
 
 
 </div>	
 <%@ include file="/include/footer.jsp" %>
 <script src="./js/alerta.js"></script>
-<script src="./js/usuarios.js"></script>
 <script src="./js/bootstrap-validator.js"></script>
+<script src="./js/categorias.js"></script>
 </body>
 </html>

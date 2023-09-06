@@ -3,6 +3,7 @@ package dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import database.MysqlDBConexion;
@@ -32,10 +33,9 @@ public class MySqlCategoriaDAO implements CategoriaDAO{
 				Categoria categoria = new Categoria();
 				categoria.setIdCategoria(rs.getInt(1));
 				categoria.setNombre(rs.getString(2));
+				categorias.add(categoria);
 			}
-			if(categorias.size() == 0) {
-				categorias = null;
-			}
+			
 			
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -59,25 +59,28 @@ public class MySqlCategoriaDAO implements CategoriaDAO{
 	
 	
 	@Override
-	public Categoria registrarCategoria(Categoria categoria) {
+	public Categoria registrarCategoria(String nombre) {
 		
 		Connection cn = null;
 		PreparedStatement pstm = null;
 		ResultSet rs = null;
+		Categoria categoria = new Categoria();
 
 		
 		try {
 			
 			cn = MysqlDBConexion.getConexion();
 			
-			String sql = "insert into categoria values(null,?);";
+			String sql = "insert into categoria (nombre) values(?);";
 			
-			pstm = cn.prepareStatement(sql);
-			pstm.setString(1, categoria.getNombre());
+			pstm = cn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+			pstm.setString(1, nombre);
 			
+			pstm.executeUpdate();
 			rs = pstm.getGeneratedKeys();
 			if(rs.next()) {
-				categoria.setIdCategoria(0);
+				categoria.setIdCategoria(rs.getInt(1));
+				categoria.setNombre(nombre);
 			}
 			else {
 				categoria = null;
