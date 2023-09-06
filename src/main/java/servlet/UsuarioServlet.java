@@ -166,11 +166,11 @@ public class UsuarioServlet extends HttpServlet {
     
     
     public void editarUsuario(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    	String idUsuario = request.getParameter("dni");
+    	String idUsuario = request.getParameter("idUsuario");
     	String nombres = request.getParameter("nombres");
     	String apellidos = request.getParameter("apellidos");
     	String nacimiento = request.getParameter("fecha");
-    	String correo = request.getParameter("correo");
+    	String correo = request.getParameter("email");
     	
     	if(correo.equals("")) {
     		correo = null;

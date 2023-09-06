@@ -114,6 +114,9 @@ public class MySqlUsuarioDAO implements UsuarioDAO{
 					.collect(Collectors.toList()).get(0);
 			usuario.setRol(rol);
 			usuario.setPassword(null);
+			if(usuario.getEmail() == null) {
+				usuario.setEmail("**Sin datos**");
+			}
 			
 			}else {
 				usuario = null;
@@ -164,7 +167,16 @@ public class MySqlUsuarioDAO implements UsuarioDAO{
 				usuario.setEmail(rs.getString(5) != null ? rs.getString(5) : "");
 				usuario.setFechaRegistro(rs.getString(6));
 				usuario.setEstado(rs.getBoolean(7));
-				usuario.setIdRol(rs.getInt(8));			
+				usuario.setIdRol(rs.getInt(8));
+				
+				int idRol = usuario.getIdRol();
+				DAOFactory daoFactory = DAOFactory.getDAOFactory(DAOFactory.MYSQL);
+				RolDAO daoRol = daoFactory.getRolDAO();	
+				Rol rol  = daoRol.listadoRol()
+						.stream()
+						.filter(r -> r.getIdRol() == idRol)
+						.collect(Collectors.toList()).get(0);
+				usuario.setRol(rol);
 			}
 			
 			

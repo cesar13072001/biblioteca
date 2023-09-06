@@ -14,7 +14,6 @@ function habilitarInputCorreo() {
 
 function accionFormulario() {
   var idUsuario = $("#idUsuario").val();
-  console.log(idUsuario);
   if (idUsuario != "0") {
     editarUsuario();
   } else {
@@ -39,6 +38,7 @@ function agregarUsuario() {
     success: function (data) {
 		console.log(data);
       if (data != null) {
+		tabledata.row.add(data).draw(false);
         $("#staticBackdrop").modal("hide");
         mostrarAlerta(0, "Usuario agregado correctamente");
       } else {
@@ -62,9 +62,9 @@ function editarUsuario() {
     nombres: $("#nombres").val(),
     apellidos: $("#apellidos").val(),
     fecha: $("#fecha").val(),
-    dni: $("#idUsuario").val(),
-    correo: $("#correo").val()
-  };
+    idUsuario: $("#idUsuario").val(),
+    email: $("#correo").val()
+   };
  
   $.ajax({
     type: "POST",
@@ -73,8 +73,14 @@ function editarUsuario() {
     dataType: "json",
     success: function (data) {
       if (data.resultado == 1) {
+		  usuario.nombres = datos.nombres;
+		  usuario.apellidos = datos.apellidos;
+		  usuario.fechaNacimiento = datos.fecha;
+		  usuario.email = datos.email;
+		  
         $("#staticBackdrop").modal("hide");
         mostrarAlerta(0, "Usuario editado correctamente");
+        tabledata.row(fila).data(usuario).draw(false);
       } else {
         mostrarAlerta(2, "Ocurrio un error al editar");
       }
@@ -313,6 +319,7 @@ $("#tabla tbody").on("click", ".btn-editar", function () {
   $("#dni").attr("required", false);
   rellenarCampos(idUsuario);
 });
+
 
 $("#staticBackdrop").on("hidden.bs.modal", function () {
   $("#formularioUsuario")[0].reset();
