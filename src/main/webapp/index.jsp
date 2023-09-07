@@ -19,8 +19,8 @@
 <%@ include file="include/alerta.jsp" %>
 <h1>Bienvenido de vuelta</h1>
 <ol class="breadcrumb">
-	<li class="breadcrumb-item"><a href="/dashboard">Biblioteca</a></li>
-    <li class="breadcrumb-item active">Categorías</li>
+	<li class="breadcrumb-item"><a href="./">Biblioteca</a></li>
+    <li class="breadcrumb-item active"></li>
 </ol>
 
 

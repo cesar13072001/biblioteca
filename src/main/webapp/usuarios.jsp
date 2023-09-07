@@ -15,11 +15,11 @@
 
 <%@ include file="/include/menu.jsp" %>
 
-<div class="bg-white m-lg-2 p-lg-3 m-1 p-2 shadow-lg rounded-2" id="contenedor">
+<div class="bg-white m-lg-2 p-lg-3 m-1 p-2 shadow-lg rounded-4" id="contenedor">
 <%@ include file="include/alerta.jsp" %>
 <h1>Usuarios</h1>
 <ol class="breadcrumb">
-	<li class="breadcrumb-item"><a href="/dashboard">Biblioteca</a></li>
+	<li class="breadcrumb-item"><a href="./">Biblioteca</a></li>
     <li class="breadcrumb-item active">Usuarios</li>
 </ol>
 
@@ -44,7 +44,7 @@ Registrar
 	        	<input type="hidden" id="idUsuario" value="0">
 					<div class="col-12">
 						<label class="form-label" for="nombres">Nombres</label>
-						<input class="form-control" type="text" id="nombres" required>
+						<input class="form-control" type="text" id="nombres" required autocomplete="off">
 						<div class="invalid-feedback">
 			        	Ingrese los nombres
 			      		</div>
@@ -52,7 +52,7 @@ Registrar
 					
 					<div class="col-12">
 						<label class="form-label" for="apellidos">Apellidos</label>
-						<input class="form-control" type="text" id="apellidos" required>
+						<input class="form-control" type="text" id="apellidos" required autocomplete="off">
 						<div class="invalid-feedback">
 			        	Ingrese los apellidos
 			      		</div>
@@ -60,7 +60,7 @@ Registrar
 					
 					<div class="col-12">
 						<label class="form-label" for="fecha">Fecha de nacimiento</label>
-						<input class="form-control" type="date" id="fecha" required>
+						<input class="form-control" type="date" id="fecha" required autocomplete="off">
 						<div class="invalid-feedback">
 			        	Ingrese la fecha de nacimiento
 			      		</div>
@@ -69,7 +69,7 @@ Registrar
 					
 					<div class="col-6" id="div_dni">
 						<label class="form-label" for="dni">DNI</label>
-						<input class="form-control" type="text" id="dni" required>
+						<input class="form-control" type="text" id="dni" required autocomplete="off">
 						<div class="invalid-feedback">
 			        	Ingrese un documento de identidad
 			      		</div>
@@ -92,7 +92,7 @@ Registrar
 					
 					<div class="col-12" id="div_correo" hidden="true">
 						<label class="form-label" for="correo">Correo</label>
-						<input class="form-control" type="email" id="correo">
+						<input class="form-control" type="email" id="correo" autocomplete="off">
 						<div class="invalid-feedback">
 			        	Formato incorrecto
 			      		</div>

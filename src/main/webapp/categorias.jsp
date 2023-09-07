@@ -19,13 +19,13 @@
 <%@ include file="include/alerta.jsp" %>
 <h1>Categorías</h1>
 <ol class="breadcrumb">
-	<li class="breadcrumb-item"><a href="/dashboard">Biblioteca</a></li>
+	<li class="breadcrumb-item"><a href="./">Biblioteca</a></li>
     <li class="breadcrumb-item active">Categorías</li>
 </ol>
 
 
 <button type="button" class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-Registrar
+Agregar
 </button>
 	
 	
@@ -36,13 +36,13 @@ Registrar
 	      <div class="modal-header">
 	        <h1 class="modal-title fs-5" id="tituloModal">Agregar categoría</h1>
 	      </div>
-	      <form class="needs-validation" id="formularioUsuario" novalidate action="javascript:accionFormulario()">
+	      <form class="needs-validation" id="formularioCategoria" novalidate action="javascript:accionFormulario()">
 	      	<div class="modal-body row g-3">
 	      
 	        	<input type="hidden" id="idCategoria" value="0">
 					<div class="col-12">
 						<label class="form-label" for="nombres">Nombres</label>
-						<input class="form-control" type="text" id="nombres" required>
+						<input class="form-control" type="text" id="nombres" required autocomplete="off">
 						<div class="invalid-feedback">
 			        	Ingrese un nombre
 			      		</div>

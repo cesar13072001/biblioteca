@@ -202,8 +202,8 @@ $("#tabla tbody").on("click", ".btn-editar", function () {
 
 
 $("#staticBackdrop").on("hidden.bs.modal", function () {
-  $("#formularioUsuario")[0].reset();
-  $("#formularioUsuario").removeClass("was-validated");
+  $("#formularioCategoria")[0].reset();
+  $("#formularioCategoria").removeClass("was-validated");
   $("#btn_formulario").html("Agregar");
   $("#idCategoria").val(0);
 

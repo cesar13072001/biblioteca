@@ -2,6 +2,7 @@ package entity;
 
 import lombok.Data;
 
+
 @Data
 public class Libro {
 
@@ -11,7 +12,7 @@ public class Libro {
 	
 	private String descripcion;
 	
-	private boolean estado;
+	private Boolean estado;
 	
 	private int cantidad;
 	

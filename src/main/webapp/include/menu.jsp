@@ -21,16 +21,19 @@
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Usuarios</a>
+          <a class="nav-link" href="./usuarios.jsp">Usuarios</a>
+        </li>
+         <li class="nav-item">
+          <a class="nav-link" href="./categorias.jsp">Categorías</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Libros</a>
+          <a class="nav-link" href="./libros.jsp">Libros</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Prestamos</a>
+          <a class="nav-link" href="./prestamos.jsp">Prestamos</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link">Reportes</a>
+          <a class="nav-link" href="./reportes.jsp">Reportes</a>
         </li>
       </ul>
 
