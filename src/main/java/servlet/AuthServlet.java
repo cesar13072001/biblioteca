@@ -37,7 +37,8 @@ public class AuthServlet extends HttpServlet {
     @Override
     protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     	String type = request.getParameter("type");
-    	
+    	response.setContentType("text/html; charset=utf-8");
+
     	System.out.println(type);
     	if(type.equals("login")) {
     		login(request, response);

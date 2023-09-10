@@ -53,7 +53,6 @@ public class MySqlCategoriaDAO implements CategoriaDAO{
 			}
 		}
 		
-		
 		return categorias;
 	}
 	

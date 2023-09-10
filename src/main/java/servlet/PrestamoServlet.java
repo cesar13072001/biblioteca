@@ -37,6 +37,7 @@ public class PrestamoServlet extends HttpServlet {
     @Override
     protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     	String type = request.getParameter("type");
+    	response.setContentType("text/html; charset=utf-8");
     	if(type.equals("listar")) {
     		listado(request, response);
     	}
@@ -116,7 +117,37 @@ public class PrestamoServlet extends HttpServlet {
     }
     
     protected void entrega(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+    	int idPrestamo = Integer.parseInt(request.getParameter("idPrestamo"));
+    	int idEstado = Integer.parseInt(request.getParameter("idEstado"));
+    	String fecha = new FechaActual().fecha();
+    	
+    	
+    	if(idEstado == 1) {
+			idEstado = 2;
+		}
+		else if(idEstado == 3) {
+			idEstado = 4;
+		}
+    	
+    	DAOFactory daoFactory = DAOFactory.getDAOFactory(DAOFactory.MYSQL);
+		PrestamoDAO daoPrestamo = daoFactory.getPrestamoDAO();
+		
+		Prestamo prestamo = new Prestamo();
+		
+		try {
+			prestamo = daoPrestamo.entregarLibro(idPrestamo, fecha, idEstado);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		System.out.println();
+    	Gson gson = new Gson();
+    	PrintWriter out = response.getWriter();
+		out.print(gson.toJson(prestamo));
+		out.flush();
+		out.close();
+    	
+    	
     }
     
     protected void consultaDeuda(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

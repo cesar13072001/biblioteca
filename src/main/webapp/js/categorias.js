@@ -1,6 +1,32 @@
 var tabledata;
 var fila;
 var categoria;
+
+
+
+
+
+
+
+listado2();
+function listado2() {
+  $.ajax({
+    url: "./CategoriaServlet?type=listar",
+    type: "GET",
+    dataType: "json",
+    contentType: "application/json; charset=utf-8",
+    //async: false,
+    success: function (data) {
+	  console.log(data);
+    },
+    error: function (error) {
+      console.log(error);
+    },
+    beforeSend: function () {},
+  });
+}
+
+
 listado();
 
 function listado() {

@@ -34,7 +34,7 @@ public class MySqlPrestamoDAO implements PrestamoDAO{
 			
 			cn = MysqlDBConexion.getConexion();
 			
-			String sql = "select * from prestamo;";
+			String sql = "select * from prestamo";
 			pstm = cn.prepareStatement(sql);
 			rs = pstm.executeQuery();
 			
@@ -116,6 +116,7 @@ public class MySqlPrestamoDAO implements PrestamoDAO{
 			pstm.executeUpdate();
 			rs = pstm.getGeneratedKeys();
 			if(rs.next()) {
+				prestamo.setFechaEntrega("**Sin entrega**");
 				DAOFactory daoFactory = DAOFactory.getDAOFactory(DAOFactory.MYSQL);
 				UsuarioDAO daoUsuario = daoFactory.getUsuarioDAO();
 				LibroDAO daoLibro = daoFactory.getLibroDAO();
@@ -131,6 +132,63 @@ public class MySqlPrestamoDAO implements PrestamoDAO{
 			else {
 				prestamo = null;
 			}
+			
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		finally {
+			try {
+				if(pstm!=null) pstm.close();
+				if(cn!=null) cn.close();
+				
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		
+		
+		return prestamo;
+	}
+	
+	
+	@Override
+	public Prestamo entregarLibro(int idPrestamo, String fechaEntrega, int idEstado) {
+		
+		Connection cn = null;
+		PreparedStatement pstm = null;
+		//ResultSet rs = null;
+		Prestamo prestamo = null;
+
+		try {
+			
+			cn = MysqlDBConexion.getConexion();
+			
+			String sql = "update prestamo set idEstado = ?, fechaEntrega = ? where idPrestamo = ?;";
+			
+			
+			pstm = cn.prepareStatement(sql);
+			pstm.setInt(1, idEstado);
+			pstm.setString(2, fechaEntrega);
+			pstm.setInt(3, idPrestamo);
+			
+			
+			
+			int salida = pstm.executeUpdate();
+			if (salida > 0) {
+				prestamo = new Prestamo();
+				
+				prestamo.setFechaEntrega(fechaEntrega);
+				prestamo.setIdEstado(idEstado);
+				
+				DAOFactory daoFactory = DAOFactory.getDAOFactory(DAOFactory.MYSQL);
+				EstadoPrestamoDAO daoEstadoPrestamo = daoFactory.getEstadoPrestamoDAO();
+				
+				prestamo.setEstadoPrestamo(daoEstadoPrestamo.buscarEstadoPrestamo(prestamo.getIdEstado()));
+				
+			}
+			
 			
 			
 		} catch (Exception e) {

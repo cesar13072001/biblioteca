@@ -25,7 +25,7 @@
 
 
 <button type="button" class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-Agregar
+<i class="fa-solid fa-book-open-reader"></i> Agregar
 </button>
 	
 	

@@ -12,4 +12,6 @@ public interface PrestamoDAO {
 
 	public List<Prestamo> listadoPrestmamos();
 
+	public Prestamo entregarLibro(int idPrestamo, String fechaEntrega, int idEstado);
+
 }

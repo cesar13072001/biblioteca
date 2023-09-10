@@ -35,6 +35,8 @@ public class LibroServlet extends HttpServlet {
     @Override
     protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     	String type= request.getParameter("type");
+    	response.setContentType("text/html; charset=utf-8");
+
     	if(type.equals("listar")) {
     		listarLibros(request, response);
     	}

@@ -36,6 +36,8 @@ public class CategoriaServlet extends HttpServlet {
     @Override
     protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     	String type= request.getParameter("type");
+    	response.setContentType("text/html; charset=utf-8");
+
     	if(type.equals("listar")) {
     		listarCategorias(request, response);
     	}
@@ -70,7 +72,8 @@ public class CategoriaServlet extends HttpServlet {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-    	
+    	request.setCharacterEncoding("UTF-8");
+
     	Gson gson = new Gson();
     	PrintWriter out = response.getWriter();
 		out.print(gson.toJson(respuesta));

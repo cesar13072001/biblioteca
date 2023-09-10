@@ -27,7 +27,7 @@
 
 
 <button type="button" class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-Registrar
+<i class="fa-solid fa-address-card"></i> Registrar
 </button>
 	
 	

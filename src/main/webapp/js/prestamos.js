@@ -1,13 +1,8 @@
 var usuario;
 var libro;
-
-
-
-
-
+var fila;
 
 listado();
-
 
 
 function formularioUsuario(){
@@ -116,13 +111,17 @@ function listado() {
  				</button>`;  
 	  	}
 	  },
-      {
-        defaultContent:
-          '<button type="button" title="Entregar" class="btn btn-primary btn-entregar"><i class="fa-solid fa-book-bookmark"></i></button> ',
-        orderable: false,
-        searchable: false,
-        width: "50px",
-      }
+      { data: "idEstado", width: "50px", orderable: false, searchable: false,
+       render: function(valor){
+		  if (valor == 1 || valor == 3){
+			  return '<button type="button" title="Entregar" class="btn btn-primary btn-entregar"><i class="fa-solid fa-circle-check"></i></button> '; 
+		  }
+		  else{
+			 return '<button type="button" title="Entregar" class="btn btn-primary btn-entregar" disabled><i class="fa-solid fa-circle-check"></i></button> ';
+		  }
+	  }
+	  }
+      
     ],
     drawCallback: function() {
       $('[data-bs-toggle="popover"]').popover();
@@ -264,15 +263,101 @@ function accionFormulario(){
     async: false,
     success: function (data) {
 	  console.log(data);
+	  if (data != null) {
+		tabledata.row.add(data).draw(false);
+        $("#staticBackdrop").modal("hide");
+        mostrarAlerta(0, "Prestamo agregado correctamente");
+      } else {
+        mostrarAlerta(2, "Ocurrio un error al reservar el libro");
+      }
     },
     error: function (error) {
       console.log(error);
+      mostrarAlerta(1, "Vuelva a intentarlo mas tarde");
     },
     beforeSend: function () {},
   });
 	
 }
 
+
+function entregarLibro(idPrestamo, idEstado){
+	console.log({idPrestamo, idEstado});
+	$.ajax({
+    url: "./PrestamoServlet?type=entrega",
+    data: {idPrestamo, idEstado},
+    type: "POST",
+    dataType: "json",
+    //async: false,
+    success: function (data) {
+	  if(data != null){
+		console.log(data);
+	  let prestamo = tabledata.row(fila).data();
+	  prestamo.idEstado = data.idEstado;
+	  prestamo.estadoPrestamo = data.estadoPrestamo;
+	  prestamo.fechaEntrega = data.fechaEntrega;
+	  tabledata.row(fila).data(prestamo).draw(false);  
+	  mostrarAlerta(0, "Libro entregado correctamente");
+	 }
+	 else{
+	  mostrarAlerta(2, "Ocurrio un error al entregar el libro");
+	 }
+	  
+    },
+    error: function (error) {
+      console.log(error);
+      mostrarAlerta(1, "Vuelva a intentarlo mas tarde");
+    },
+    beforeSend: function () {},
+  });
+	
+}
+
+
+
+$("#tabla tbody").on("click", ".btn-entregar", function () {
+  var filaSeleccionada = $(this).closest("tr");
+  fila = filaSeleccionada;
+  let idPrestamo = tabledata.row(filaSeleccionada).data()["idPrestamo"];
+  let idEstado = tabledata.row(filaSeleccionada).data()["idEstado"];
+  
+  
+  const swalWithBootstrapButtons = Swal.mixin({
+    customClass: {
+      confirmButton: "btn btn-success m-1",
+      cancelButton: "btn btn-danger m-1",
+    },
+    buttonsStyling: false,
+  });
+  swalWithBootstrapButtons
+    .fire({
+      title: "¿Desea entregar libro?",
+      text: "El usuario entregará el libro",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonText: "Continuar",
+      cancelButtonText: "Cancelar",
+      customClass: {
+        confirmButton: "btn btn-danger m-1",
+        cancelButton: "btn btn-success m-1",
+      },
+      reverseButtons: true,
+    })
+    .then((result) => {
+      if (result.isConfirmed) {
+        entregarLibro(idPrestamo, idEstado);
+        
+      } else if (result.dismiss === Swal.DismissReason.cancel) {
+        swalWithBootstrapButtons.fire(
+          "Cancelado",
+          "Usted canceló la acción",
+          "error"
+        );
+      }
+    });
+  
+  
+});
 
 
 $("#staticBackdrop").on("hidden.bs.modal", function () {
