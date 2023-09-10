@@ -2,6 +2,7 @@ package dao;
 
 import interfaces.AuthDAO;
 import interfaces.CategoriaDAO;
+import interfaces.EstadoPrestamoDAO;
 import interfaces.LibroDAO;
 import interfaces.PrestamoDAO;
 import interfaces.RolDAO;
@@ -38,6 +39,11 @@ public class MySqlDAOFactory extends DAOFactory{
 	@Override
 	public RolDAO getRolDAO() {
 		return new MySqlRolDAO();
+	}
+
+	@Override
+	public EstadoPrestamoDAO getEstadoPrestamoDAO() {
+		return new MySqlEstadoPrestamo();
 	}
 
 	

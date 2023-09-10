@@ -149,6 +149,15 @@ public class MySqlLibroDAO implements LibroDAO{
 				libro.setEstado(rs.getBoolean(4));
 				libro.setCantidad(rs.getInt(5));
 				libro.setIdCategoria(rs.getInt(6));
+				
+				DAOFactory daoFactory = DAOFactory.getDAOFactory(DAOFactory.MYSQL);
+				CategoriaDAO daoCategoria = daoFactory.getCategoriaDAO();
+				int id = libro.getIdCategoria();
+				Categoria categoria  = daoCategoria.listadoCategoria()
+						.stream()
+						.filter(c -> c.getIdCategoria() == id)
+						.collect(Collectors.toList()).get(0);
+				libro.setCategoria(categoria);	
 					
 			}
 			

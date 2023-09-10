@@ -1,5 +1,15 @@
 package interfaces;
 
+import java.util.List;
+
+import entity.Prestamo;
+
 public interface PrestamoDAO {
+
+	public Prestamo registrarPrestamo(Prestamo prestamo);
+
+	public int buscarDeudasUsuario(String idUsuario);
+
+	public List<Prestamo> listadoPrestmamos();
 
 }

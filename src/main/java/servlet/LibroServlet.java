@@ -17,7 +17,6 @@ import com.google.gson.Gson;
 import dao.DAOFactory;
 import entity.Libro;
 import interfaces.LibroDAO;
-import interfaces.UsuarioDAO;
 
 /**
  * Servlet implementation class LibroServlet

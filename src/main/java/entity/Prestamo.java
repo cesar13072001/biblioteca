@@ -8,10 +8,14 @@ public class Prestamo {
 	private int idPrestamo;
 	private String fechaPrestamo;
 	private String fechaVencimiento;
-	private String fechaEntregado;
-	private boolean estado;
-	private boolean entregado;	
-	private int idUsuario;
-	private int idLibro;
+	private String fechaEntrega;
+	private int idEstado;
+	private String idUsuario;
+	private String idLibro;
+	
+	private EstadoPrestamo estadoPrestamo;
+	private Usuario usuario;
+	private Libro libro;
 }
+
 

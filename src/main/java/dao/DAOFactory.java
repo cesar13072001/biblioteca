@@ -2,6 +2,7 @@ package dao;
 
 import interfaces.AuthDAO;
 import interfaces.CategoriaDAO;
+import interfaces.EstadoPrestamoDAO;
 import interfaces.LibroDAO;
 import interfaces.PrestamoDAO;
 import interfaces.RolDAO;
@@ -19,7 +20,9 @@ public abstract class DAOFactory {
 	public abstract RolDAO getRolDAO();
 	public abstract LibroDAO getLibroDAO();
 	public abstract CategoriaDAO getCategoriaDAO();
+	public abstract EstadoPrestamoDAO getEstadoPrestamoDAO();
 	public abstract PrestamoDAO getPrestamoDAO();
+	
 	
 	public static DAOFactory getDAOFactory(int tipo) {
 		
