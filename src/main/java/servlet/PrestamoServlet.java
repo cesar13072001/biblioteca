@@ -16,6 +16,7 @@ import com.google.gson.Gson;
 
 import dao.DAOFactory;
 import entity.Prestamo;
+import interfaces.LibroDAO;
 import interfaces.PrestamoDAO;
 import util.FechaActual;
 
@@ -96,11 +97,15 @@ public class PrestamoServlet extends HttpServlet {
     	
     	DAOFactory daoFactory = DAOFactory.getDAOFactory(DAOFactory.MYSQL);
 		PrestamoDAO daoPrestamo = daoFactory.getPrestamoDAO();
+		LibroDAO daoLibro = daoFactory.getLibroDAO();
     	
 		Prestamo salida = new Prestamo();
 		
     	try {
     		salida = daoPrestamo.registrarPrestamo(prestamo);
+    		if(salida != null) {
+    			daoLibro.actualizarCantidadReserva(idLibro, -1);
+    		}
     		
     	}catch (Exception e) {
 			e.printStackTrace();
@@ -119,6 +124,7 @@ public class PrestamoServlet extends HttpServlet {
     protected void entrega(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     	int idPrestamo = Integer.parseInt(request.getParameter("idPrestamo"));
     	int idEstado = Integer.parseInt(request.getParameter("idEstado"));
+    	String idLibro = request.getParameter("idLibro");
     	String fecha = new FechaActual().fecha();
     	
     	
@@ -131,11 +137,16 @@ public class PrestamoServlet extends HttpServlet {
     	
     	DAOFactory daoFactory = DAOFactory.getDAOFactory(DAOFactory.MYSQL);
 		PrestamoDAO daoPrestamo = daoFactory.getPrestamoDAO();
+		LibroDAO daoLibro = daoFactory.getLibroDAO();
+
 		
 		Prestamo prestamo = new Prestamo();
 		
 		try {
 			prestamo = daoPrestamo.entregarLibro(idPrestamo, fecha, idEstado);
+			if(prestamo != null) {
+				daoLibro.actualizarCantidadReserva(idLibro, 1);
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

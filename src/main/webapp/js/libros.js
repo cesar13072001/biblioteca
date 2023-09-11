@@ -130,7 +130,7 @@ function agregarLibro() {
         $("#staticBackdrop").modal("hide");
         mostrarAlerta(0, "Usuario agregado correctamente");
       } else {
-        mostrarAlerta(2, "Ocurrio un error al agregar usuario");
+        mostrarAlerta(2, "Ocurrio un error al agregar libro");
       }
       desactivarBotones(true, "Agreg");
 

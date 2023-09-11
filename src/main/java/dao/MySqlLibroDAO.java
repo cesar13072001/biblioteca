@@ -233,6 +233,48 @@ public class MySqlLibroDAO implements LibroDAO{
 		return libro;
 	}
 	
+	
+
+	@Override
+	public int actualizarCantidadReserva(String idLibro, int cantidad) {
+		int salida = 0;
+		Connection cn = null;
+		PreparedStatement pstm = null;
+
+		try {
+			
+			cn = MysqlDBConexion.getConexion();
+			
+			String sql = "call sp_actualizarCantidadLibro(?,?);";
+			
+			pstm = cn.prepareStatement(sql);
+			pstm.setString(1, idLibro);
+			pstm.setInt(2, cantidad);
+			
+			
+			salida = pstm.executeUpdate();
+			
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		finally {
+			try {
+				if(pstm!=null) pstm.close();
+				if(cn!=null) cn.close();
+				
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		
+		
+		return salida;
+	}
+	
+	
+	
 	@Override
 	public int editarEstadoLibro(String idUsuario, boolean estado){
 		int salida = 0;

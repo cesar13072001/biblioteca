@@ -260,9 +260,8 @@ function accionFormulario(){
     data: datos,
     type: "POST",
     dataType: "json",
-    async: false,
     success: function (data) {
-	  console.log(data);
+	  console.log(data); 
 	  if (data != null) {
 		tabledata.row.add(data).draw(false);
         $("#staticBackdrop").modal("hide");
@@ -270,22 +269,57 @@ function accionFormulario(){
       } else {
         mostrarAlerta(2, "Ocurrio un error al reservar el libro");
       }
+      desactivarBotones(true);
     },
     error: function (error) {
       console.log(error);
+      desactivarBotones(true);
       mostrarAlerta(1, "Vuelva a intentarlo mas tarde");
     },
-    beforeSend: function () {},
+    beforeSend: function () {
+		
+		desactivarBotones(false);
+	},
   });
 	
 }
 
 
-function entregarLibro(idPrestamo, idEstado){
+function desactivarBotones(estado){
+	var btn_buscarUsuario = $("#btn_buscarUsuario");
+	var btn_buscarLibro = $("#btn_buscarLibro");
+	var btn_formulario = $("#btn_formulario");
+	var btn_cerrar = $("#btn_cerrar");
+	
+	
+	if(estado){
+		btn_formulario.html("Reservar");
+		btn_formulario.attr('disabled', false);
+		btn_cerrar.attr('disabled', false);
+		
+		btn_buscarUsuario.attr('disabled',false);
+		btn_buscarLibro.attr('disabled',false);
+		
+	}else{
+	    let texto = `<div class="spinner-border spinner-border-sm" role="status">
+  			<span class="visually-hidden">Loading...</span>
+			</div>` + "Reservando...";
+	    btn_formulario.html(texto);
+	    btn_formulario.attr('disabled', true);
+		btn_cerrar.attr('disabled', true);
+		
+		btn_buscarUsuario.attr('disabled',true);
+		btn_buscarLibro.attr('disabled',true);
+	    
+	}
+}
+
+
+function entregarLibro(idPrestamo, idEstado, idLibro){
 	console.log({idPrestamo, idEstado});
 	$.ajax({
     url: "./PrestamoServlet?type=entrega",
-    data: {idPrestamo, idEstado},
+    data: {idPrestamo, idEstado, idLibro},
     type: "POST",
     dataType: "json",
     //async: false,
@@ -320,6 +354,7 @@ $("#tabla tbody").on("click", ".btn-entregar", function () {
   fila = filaSeleccionada;
   let idPrestamo = tabledata.row(filaSeleccionada).data()["idPrestamo"];
   let idEstado = tabledata.row(filaSeleccionada).data()["idEstado"];
+  let idLibro = tabledata.row(filaSeleccionada).data()["idLibro"];
   
   
   const swalWithBootstrapButtons = Swal.mixin({
@@ -345,7 +380,7 @@ $("#tabla tbody").on("click", ".btn-entregar", function () {
     })
     .then((result) => {
       if (result.isConfirmed) {
-        entregarLibro(idPrestamo, idEstado);
+        entregarLibro(idPrestamo, idEstado, idLibro);
         
       } else if (result.dismiss === Swal.DismissReason.cancel) {
         swalWithBootstrapButtons.fire(
@@ -371,6 +406,7 @@ $("#staticBackdrop").on("hidden.bs.modal", function () {
   $("#div_disponible").attr("hidden", true);
   $("#formularioPrestamo").attr("hidden", true);
   $("#formularioPrestamo").removeClass("was-validated");
+  $("#btn_formulario").attr('disabled',true);
   usuario = null;
   libro = null;
 });

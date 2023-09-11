@@ -18,4 +18,6 @@ public interface LibroDAO {
 
 	public int editarEstadoLibro(String idUsuario, boolean estado);
 
+	public int actualizarCantidadReserva(String idLibro, int cantidad);
+
 }

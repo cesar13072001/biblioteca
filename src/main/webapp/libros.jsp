@@ -46,7 +46,20 @@
 			        	Ingrese el ISBN
 			      		</div>
 					</div>
-	      
+				<!-- 
+				 <div class="col-6">
+				 	<label class="form-label" for="idLibro">Cantidad</label>	 	
+					<div class="input-group mb-3">
+					  <button class="btn btn-outline-secondary" type="button" id="button-addon2"><i class="fa-solid fa-minus"></i></button>
+					  <input type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="button-addon2">
+					 <button class="btn btn-outline-secondary" type="button" id="button-addon2"><i class="fa-solid fa-plus"></i></button>
+					
+					</div>
+				</div>
+				<div class="col-6 mt-5 text-center">
+				<button class="btn btn-primary">Actualizar</button>
+				</div>
+	       -->	
 					<div class="col-12">
 						<label class="form-label" for="titulo">Titulo</label>
 						<input class="form-control" type="text" id="titulo" autocomplete="off" required>

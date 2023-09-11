@@ -64,7 +64,7 @@
 						<label class="form-label" for="idLibro">ISBN</label>
 						<div class="input-group">
 							<input class="form-control" type="text" id="idLibro" required autocomplete="off">
-							<button class="btn btn-outline-secondary" type="submit" id="btn_buscarUsuario"><i class="fa-solid fa-magnifying-glass"></i></button>
+							<button class="btn btn-outline-secondary" type="submit" id="btn_buscarLibro"><i class="fa-solid fa-magnifying-glass"></i></button>
 						</div>
 						<div class="invalid-feedback">
 			        	Ingrese el ISBN del libro

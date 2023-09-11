@@ -144,6 +144,15 @@ END$$
 
 
 
+DELIMITER $$
+CREATE  PROCEDURE sp_actualizarCantidadLibro(
+IN i_idLibro varchar(13),
+IN i_cantidad int
+)
+begin
+set @cantidad = (select cantidad FROM libro);
+update libro set cantidad = (@cantidad + i_cantidad) where idLibro =  i_idLibro;
+END$$
 
 
 
