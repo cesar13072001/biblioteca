@@ -15,12 +15,11 @@ import javax.servlet.http.HttpSession;
 
 import entity.Usuario;
 
-
 /**
- * Servlet Filter implementation class AuthFilter
+ * Servlet Filter implementation class LoginFilter
  */
-@WebFilter("/AuthFilter")
-public class AuthFilter extends HttpFilter implements Filter {
+@WebFilter("/LoginFilter")
+public class LoginFilter extends HttpFilter implements Filter {
        
     /**
 	 * 
@@ -30,7 +29,7 @@ public class AuthFilter extends HttpFilter implements Filter {
 	/**
      * @see HttpFilter#HttpFilter()
      */
-    public AuthFilter() {
+    public LoginFilter() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -49,17 +48,11 @@ public class AuthFilter extends HttpFilter implements Filter {
 		HttpSession sesion = ((HttpServletRequest)request).getSession();
 		Usuario usuario = (Usuario)sesion.getAttribute("usuario");
 		if(usuario != null) {
-			if(usuario.getIdRol() == 1) {
-				chain.doFilter(request, response);	
-			}else {
-				((HttpServletResponse) response).sendRedirect("./unauthorized.jsp");
-			}			
+			((HttpServletResponse) response).sendRedirect("./");
 		}
 		else {
-			((HttpServletResponse) response).sendRedirect("./login.jsp");
+			chain.doFilter(request, response);
 		}
-		
-		
 	}
 
 	/**

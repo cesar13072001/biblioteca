@@ -1,7 +1,7 @@
 <footer class="text-center position-absolute w-100 p-2" style="bottom:0; background-color: white; height: 60px">
 <div class="text-muted">Copyright &copy; Biblioteca - CAZ - 2023</div>
 <div>
-<a target="_blank" href="https://github.com/cesar13072001">Portafolio</a>
+<a target="_blank" href="https://cesar13072001.github.io/portafolio/">Portafolio</a>
 &middot;
 <a target="_blank" href="https://github.com/cesar13072001">GitHub (cesar13072001)</a>
 </div>

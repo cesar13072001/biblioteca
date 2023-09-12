@@ -88,6 +88,7 @@ public class MySqlCategoriaDAO implements CategoriaDAO{
 			
 		} catch (Exception e) {
 			e.printStackTrace();
+			categoria = null;
 		}
 		
 		finally {

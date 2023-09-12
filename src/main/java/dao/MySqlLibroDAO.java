@@ -108,6 +108,7 @@ public class MySqlLibroDAO implements LibroDAO{
 			
 		} catch (Exception e) {
 			e.printStackTrace();
+			libro = null;
 		}
 		
 		finally {
@@ -217,6 +218,7 @@ public class MySqlLibroDAO implements LibroDAO{
 			
 		} catch (Exception e) {
 			e.printStackTrace();
+			libro = null;
 		}
 		
 		finally {

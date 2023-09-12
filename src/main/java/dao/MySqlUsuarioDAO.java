@@ -125,6 +125,7 @@ public class MySqlUsuarioDAO implements UsuarioDAO{
 			
 		} catch (Exception e) {
 			e.printStackTrace();
+			usuario= null;
 		}
 		
 		finally {

@@ -136,6 +136,7 @@ public class MySqlPrestamoDAO implements PrestamoDAO{
 			
 		} catch (Exception e) {
 			e.printStackTrace();
+			prestamo = null;
 		}
 		
 		finally {
@@ -158,7 +159,6 @@ public class MySqlPrestamoDAO implements PrestamoDAO{
 		
 		Connection cn = null;
 		PreparedStatement pstm = null;
-		//ResultSet rs = null;
 		Prestamo prestamo = null;
 
 		try {

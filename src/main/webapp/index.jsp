@@ -18,10 +18,7 @@
 <div class="bg-white m-lg-2 p-lg-3 m-1 p-2 shadow-lg rounded-2" id="contenedor">
 <%@ include file="include/alerta.jsp" %>
 <h1>Bienvenido de vuelta</h1>
-<ol class="breadcrumb">
-	<li class="breadcrumb-item"><a href="./">Biblioteca</a></li>
-    <li class="breadcrumb-item active"></li>
-</ol>
+
 
 
 

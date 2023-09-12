@@ -111,6 +111,9 @@ function listado() {
       url: "./UsuarioServlet?type=listar",
       type: "GET",
       dataType: "json",
+      error: function(error){
+		 return [];
+	  }
     },
     columns: [
       { data: "idUsuario" },

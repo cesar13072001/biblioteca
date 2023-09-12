@@ -94,7 +94,7 @@ public class UsuarioServlet extends HttpServlet {
     	String dni = request.getParameter("dni");
     	String correo = request.getParameter("correo");
     	
-    	Usuario salida = new Usuario();
+    	Usuario salida = null;
     	
     	if(correo.equals("")) {
     		correo = null;
@@ -132,6 +132,7 @@ public class UsuarioServlet extends HttpServlet {
         	}
     	catch (Exception e) {
 			System.out.println(e);
+			salida = null;
 		}
     	
     	Gson gson = new Gson();

@@ -38,10 +38,12 @@ public class AuthServlet extends HttpServlet {
     protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     	String type = request.getParameter("type");
     	response.setContentType("text/html; charset=utf-8");
-
-    	System.out.println(type);
+    	
     	if(type.equals("login")) {
     		login(request, response);
+    	}
+    	if(type.equals("logout")) {
+    		salir(request, response);
     	}
     }
     
@@ -92,8 +94,21 @@ public class AuthServlet extends HttpServlet {
     
     
     protected void salir(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    	request.getSession().invalidate();
-		response.sendRedirect("login.jsp");
+    	HashMap<String, Object> respuesta = null;
+    	
+    	try {
+    		request.getSession().invalidate();
+    		respuesta = new HashMap<String, Object>();
+        	respuesta.put("salida",1);
+    	}
+    	catch (Exception e) {
+			e.printStackTrace();
+		}
+    	Gson gson = new Gson();
+    	PrintWriter out = response.getWriter();
+		out.print(gson.toJson(respuesta));
+		out.flush();
+		out.close();
     }
     
     

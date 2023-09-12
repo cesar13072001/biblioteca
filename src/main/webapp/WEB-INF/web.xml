@@ -11,4 +11,102 @@
   </welcome-file-list>
   
 
+<filter>
+	<filter-name>AuthFilter</filter-name>
+	<filter-class>filter.AuthFilter</filter-class>
+</filter>
+
+
+
+<filter-mapping>
+	<filter-name>AuthFilter</filter-name>
+	<url-pattern>/usuarios.jsp</url-pattern>
+</filter-mapping>
+
+<filter-mapping>
+	<filter-name>AuthFilter</filter-name>
+	<url-pattern>/categorias.jsp</url-pattern>
+</filter-mapping>
+
+<filter-mapping>
+	<filter-name>AuthFilter</filter-name>
+	<url-pattern>/libros.jsp</url-pattern>
+</filter-mapping>
+
+<filter-mapping>
+	<filter-name>AuthFilter</filter-name>
+	<url-pattern>/prestamos.jsp</url-pattern>
+</filter-mapping>
+
+<filter-mapping>
+	<filter-name>AuthFilter</filter-name>
+	<url-pattern>/reportes.jsp</url-pattern>
+</filter-mapping>
+
+
+
+  
+<filter-mapping>
+	<filter-name>AuthFilter</filter-name>
+	<url-pattern>/UsuarioServlet/*</url-pattern>
+	<dispatcher>FORWARD</dispatcher>
+<dispatcher>REQUEST</dispatcher>
+</filter-mapping>
+
+<filter-mapping>
+	<filter-name>AuthFilter</filter-name>
+	<url-pattern>/CategoriaServlet/*</url-pattern>
+	<dispatcher>FORWARD</dispatcher>
+<dispatcher>REQUEST</dispatcher>
+</filter-mapping>
+
+<filter-mapping>
+	<filter-name>AuthFilter</filter-name>
+	<url-pattern>/LibroServlet/*</url-pattern>
+	<dispatcher>FORWARD</dispatcher>
+<dispatcher>REQUEST</dispatcher>
+</filter-mapping>
+
+<filter-mapping>
+	<filter-name>AuthFilter</filter-name>
+	<url-pattern>/PrestamoServlet/*</url-pattern>
+	<dispatcher>FORWARD</dispatcher>
+<dispatcher>REQUEST</dispatcher>
+</filter-mapping>
+
+<filter-mapping>
+	<filter-name>AuthFilter</filter-name>
+	<url-pattern>/ReporteServlet/*</url-pattern>
+	<dispatcher>FORWARD</dispatcher>
+<dispatcher>REQUEST</dispatcher>
+</filter-mapping>
+
+
+
+<filter>
+	<filter-name>IndexFilter</filter-name>
+	<filter-class>filter.IndexFilter</filter-class>
+</filter>
+
+<filter-mapping>
+	<filter-name>IndexFilter</filter-name>
+	<url-pattern>/index.jsp</url-pattern>
+</filter-mapping>
+
+
+
+
+<filter>
+	<filter-name>LoginFilter</filter-name>
+	<filter-class>filter.LoginFilter</filter-class>
+</filter>
+
+<filter-mapping>
+	<filter-name>LoginFilter</filter-name>
+	<url-pattern>/login.jsp</url-pattern>
+</filter-mapping>
+
+
+
+
 </web-app>

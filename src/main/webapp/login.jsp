@@ -5,7 +5,12 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<%@ include file="include/header.jsp" %>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+<link rel="shortcut icon" href="./image/icono.ico">
+
 <title>Login</title>
 </head>
 <body>
@@ -62,39 +67,10 @@
     </div>
 
 
-<!-- scripts con link de dependencias -->
-<%@ include file="include/footer.jsp" %>
 </body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+<script src="https://kit.fontawesome.com/b073dd6059.js" crossorigin="anonymous"></script>
 <script src="./js/alerta.js"></script>
-<script>
-/*Codigo script js de alerta*/
-
-
-   function login(){
-	   var email = $("#email").val();
-	   var password = $("#password").val();
-	   
-	   $.ajax({
-		   type: "POST",
-		   url: './AuthServlet',
-		   data: {type: "login",email: email, password: password},
-		   success: function(data){
-			   var s =  $.parseJSON(data);
-			   console.log(s);
-			   if(s != null){
-				   mostrarAlerta(0,"Bienvenido de vuelta");
-			   }
-			   else{
-				   mostrarAlerta(2,"Credenciales incorrectas");
-			   }
-		   },
-		   error: function(error){
-			   console.log(error);
-			   mostrarAlerta(1,"Ocurrrio un error inesperado");
-			   
-		   }
-	   });
-   }
-</script>
+<script src="./js/login.js"></script>
 
 </html>
