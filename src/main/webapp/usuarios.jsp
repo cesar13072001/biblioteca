@@ -29,6 +29,9 @@
 <button type="button" class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
 <i class="fa-solid fa-address-card"></i> Registrar
 </button>
+<a class="btn btn-secondary" href="./ReporteSerlvet?categoria=usuario" target="_blank">
+Reporte
+</a>
 	
 	
 <!-- Modal -->

@@ -27,7 +27,9 @@
 <button type="button" class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
 <i class="fa-solid fa-book-bookmark"></i> Reservar
 </button>
-	
+<a class="btn btn-secondary" href="./ReporteSerlvet?categoria=prestamos" target="_blank">
+Reporte
+</a>
 	
 <!-- Modal -->
 <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
