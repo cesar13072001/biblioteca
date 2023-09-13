@@ -45,6 +45,7 @@ public class AuthServlet extends HttpServlet {
     	if(type.equals("logout")) {
     		salir(request, response);
     	}
+    	
     }
     
     

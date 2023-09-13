@@ -24,11 +24,13 @@
 </ol>
 
 
+
 <button type="button" class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
 <i class="fa-solid fa-book"></i> Agregar
 </button>
-<a class="btn btn-secondary" href="./ReporteSerlvet?categoria=libro" target="_blank">
-Reporte
+
+<a class="btn btn-secondary mb-3" href="./ReporteSerlvet?categoria=libro" target="_blank">
+<i class="fa-solid fa-file-pdf"></i> Reporte
 </a>
 	
 	

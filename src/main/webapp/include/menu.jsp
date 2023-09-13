@@ -36,9 +36,6 @@
         <li class="nav-item">
           <a class="nav-link" href="./prestamos.jsp">Prestamos</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="./reportes.jsp">Reportes</a>
-        </li>
         <%/*} */%>
       </ul>
 
