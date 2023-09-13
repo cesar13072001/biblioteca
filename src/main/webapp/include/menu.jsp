@@ -1,5 +1,5 @@
 <%@page import="entity.Usuario"%>
-<% Usuario usuario = (Usuario)session.getAttribute("usuario"); %>
+<% /*Usuario usuario = (Usuario)session.getAttribute("usuario");*/ %>
 
 <nav
   class="sb-topnav navbar navbar-expand-sm sticky-top"
@@ -23,7 +23,7 @@
 
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <ul class="navbar-nav">
-      	<% if(usuario.getIdRol() == 1){ %>
+      	<% /*if(usuario.getIdRol() == 1){*/ %>
         <li class="nav-item">
           <a class="nav-link" href="./usuarios.jsp">Usuarios</a>
         </li>
@@ -39,7 +39,7 @@
         <li class="nav-item">
           <a class="nav-link" href="./reportes.jsp">Reportes</a>
         </li>
-        <%} %>
+        <%/*} */%>
       </ul>
 
       <ul class="navbar-nav ms-auto me-0 me-md-3 my-2 my-md-0">
@@ -59,7 +59,6 @@
           >
             <li>
               <h6 class="dropdown-item" id="txtCorreo">
-                <%= usuario.getApellidos() +", "+usuario.getNombres() %>
               </h6>
             </li>
             <li><a class="dropdown-item">Mi cuenta</a></li>

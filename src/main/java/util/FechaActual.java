@@ -1,23 +1,35 @@
 package util;
 
-import java.time.LocalDate;
-import java.time.LocalDateTime;
+import java.time.Instant;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 
 public class FechaActual {
 	
 	public String fecha() {
-		 String timestamp = LocalDateTime.now()
-	                .format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
-	 
-	        return timestamp;   
+		Instant instant = Instant.now();
+
+        ZonedDateTime zonedDateTime = instant.atZone(ZoneId.of("UTC-5"));
+
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        String formattedDateTime = formatter.format(zonedDateTime);
+        
+        return formattedDateTime;
+		
 	}
 	
 	public String fechaAumentada(int dias) {
-		String timestamp = LocalDate.now().plusDays(dias)
-						   .format(DateTimeFormatter.ofPattern("yyyy-MM-dd"))
-						   +" 20:00:00";
-		return timestamp;
+		
+		Instant instant = Instant.now();
+
+        ZonedDateTime zonedDateTime = instant.atZone(ZoneId.of("UTC-5"));
+
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        String formattedDateTime = formatter.format(zonedDateTime)+" 20:00:00";
+        
+        return formattedDateTime;
+		
 	}
 
 }

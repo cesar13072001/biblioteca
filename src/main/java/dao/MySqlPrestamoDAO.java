@@ -248,6 +248,81 @@ public class MySqlPrestamoDAO implements PrestamoDAO{
 		return resultado;
 	}
 	
+	@Override
+	public List<Integer> listarPrestamosAtrasados() {
+		List<Integer> resultado = new ArrayList<Integer>();
+		Connection cn = null;
+		PreparedStatement pstm = null;
+		ResultSet rs = null;
+
+		try {	
+			cn = MysqlDBConexion.getConexion();
+			
+			String sql = "select idPrestamo from prestamo where idEstado = 1 and localtimestamp() > fechaVencimiento;";
+			
+			pstm = cn.prepareStatement(sql);
+			
+			rs = pstm.executeQuery();
+			
+			while(rs.next()) {
+				resultado.add(rs.getInt(1));
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		finally {
+			try {
+				if(pstm!=null) pstm.close();
+				if(cn!=null) cn.close();
+				
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}	
+		return resultado;
+	}
+	
+	
+	@Override
+	public int actualizarEstadoNoEntregado(int idPrestamo) {
+		int salida = 0;
+		Connection cn = null;
+		PreparedStatement pstm = null;
+
+		try {
+			
+			cn = MysqlDBConexion.getConexion();
+			
+			String sql = "update prestamo set idEstado = 3 where idPrestamo = ?;";
+			
+			
+			pstm = cn.prepareStatement(sql);
+
+			pstm.setInt(1, idPrestamo);
+			
+			
+			salida = pstm.executeUpdate();
+			
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		finally {
+			try {
+				if(pstm!=null) pstm.close();
+				if(cn!=null) cn.close();
+				
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		
+		
+		return salida;
+	}
 	
 	
 

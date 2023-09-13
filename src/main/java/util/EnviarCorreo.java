@@ -17,10 +17,10 @@ public class EnviarCorreo {
 		String passwordEnviador = "ilgpadnlhtiuovuy";
 		
 		String mensaje= "<h1>Registro biblioteca</h1>"
-				+ "<p>Gracias por registrarte en la biblioteca</p><br>"
+				+ "<p>Gracias por registrarte en la biblioteca</p>"
 				+ "<h2>Sus credenciales son:</h2>"
-				+ "<p><strong>Correo:</strong>"+ correo +"</p><br>"
-						+ "<p><strong>Correo:</strong>"+ password +"</p><br>"
+				+ "<p><strong>Correo: </strong>"+ correo +"</p>"
+						+ "<p><strong>Contraseña: </strong>"+ password +"</p><br>"
 						+ "<p>Que tenga un buen dia</p>";
 		
 		Properties props = System.getProperties();
@@ -38,7 +38,7 @@ public class EnviarCorreo {
 	        message.setFrom(new InternetAddress(emailEnviador));
 	        message.addRecipient(Message.RecipientType.TO, new InternetAddress(correo));   //Se podrían añadir varios de la misma manera
 	        message.setSubject("Biblioteca - Su cuenta fue creado correctamente");
-	        message.setText(mensaje);
+	        message.setContent(mensaje, "text/html; charset=utf-8");
 	        Transport transport = session.getTransport("smtp");
 	        transport.connect("smtp.gmail.com", emailEnviador, passwordEnviador);
 	        transport.sendMessage(message, message.getAllRecipients());

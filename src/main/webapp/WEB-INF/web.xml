@@ -10,7 +10,7 @@
     <welcome-file>default.htm</welcome-file>
   </welcome-file-list>
   
-
+<!--
 <filter>
 	<filter-name>AuthFilter</filter-name>
 	<filter-class>filter.AuthFilter</filter-class>
@@ -106,7 +106,7 @@
 	<url-pattern>/login.jsp</url-pattern>
 </filter-mapping>
 
-
+  -->
 
 
 </web-app>

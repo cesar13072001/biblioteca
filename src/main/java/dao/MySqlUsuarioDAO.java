@@ -52,9 +52,7 @@ public class MySqlUsuarioDAO implements UsuarioDAO{
 				usuarios.add(usuario);
 				
 			}
-			if(usuarios.size() == 0) {
-				usuarios = null;
-			}
+			
 			
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -125,7 +123,7 @@ public class MySqlUsuarioDAO implements UsuarioDAO{
 			
 		} catch (Exception e) {
 			e.printStackTrace();
-			usuario= null;
+			//usuario= null;
 		}
 		
 		finally {
