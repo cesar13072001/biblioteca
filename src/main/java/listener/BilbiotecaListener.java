@@ -27,8 +27,7 @@ public class BilbiotecaListener implements ServletContextListener {
         // TODO Auto-generated constructor stub
     }
 
-	
-  
+
 	
     public void contextInitialized(ServletContextEvent sce)  { 
          
@@ -73,7 +72,6 @@ public class BilbiotecaListener implements ServletContextListener {
         // Programa la tarea para que se ejecute todos los días a las 22:00 UTC-5
         timer.scheduleAtFixedRate(task, delay, 24 * 60 * 60 * 1000);
         
-        /*24 * 60 * 60 * 1000*/
     }
     	
     

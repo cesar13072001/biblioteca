@@ -1,16 +1,10 @@
 create database biblioteca;
-
 use biblioteca;
-
 
 create table rol(
 idRol int primary key,
 nombreRol varchar(50)
 );
-
-insert into rol values
-(1, "Encargado"),
-(2,"Lector");
 
 create table usuario(
 idusuario varchar(20) primary key,
@@ -24,14 +18,6 @@ estado bool,
 idRol int,
 CONSTRAINT FK_rol FOREIGN KEY (idRol) REFERENCES rol(idRol) on delete restrict
 );
-
-
-/*contra: admin1234*/
-insert into usuario values
-('71296307','Cesar','Aguilar Zambrano','2001-07-13',
-'admin@gmail.com','ac9689e2272427085e35b9d3e3e8bed88cb3434828b43b86fc0596cad4c6e270', localtimestamp(),true,1);
-
-
 
 
 create table categoria(
@@ -56,13 +42,6 @@ idEstado int primary key auto_increment,
 descripcion varchar(20)
 );
 
-insert into estadoEntrega values
-(null,"Pendiente"),
-(null,"Entregado"),
-(null,"No entregado"),
-(null,"Entregado tarde");
-
-
 
 create table prestamo
 (
@@ -80,8 +59,6 @@ CONSTRAINT FK_libro FOREIGN KEY (idLibro) REFERENCES libro(idLibro) on delete re
 
 
 
-
-
 DELIMITER $$
 CREATE PROCEDURE sp_verificarDeudasUsuario(
 IN i_idUsuario varchar(20)
@@ -89,7 +66,6 @@ IN i_idUsuario varchar(20)
 BEGIN
 select * from prestamo where idUsuario = i_idUsuario and (idEstado != 2 and idEstado != 4);
 END$$
-
 
 
 DELIMITER $$
@@ -100,7 +76,6 @@ r.idRol, r.nombreRol
 from usuario u inner join rol r
 on u.idRol = r.idRol;
 END$$
-
 
 
 DELIMITER $$
@@ -124,7 +99,6 @@ where idusuario = i_idusuario;
 END$$
 
 
-
 DELIMITER $$
 CREATE PROCEDURE sp_actualizarUsuario(
 IN i_nombres varchar(100),
@@ -143,7 +117,6 @@ where idUsuario = i_idUsuario;
 END$$
 
 
-
 DELIMITER $$
 CREATE  PROCEDURE sp_actualizarCantidadLibro(
 IN i_idLibro varchar(13),
@@ -155,4 +128,17 @@ update libro set cantidad = (@cantidad + i_cantidad) where idLibro =  i_idLibro;
 END$$
 
 
+insert into rol values
+(1, "Encargado"),
+(2,"Lector");
 
+/*contra: admin1234*/
+insert into usuario values
+('71296307','Cesar','Aguilar Zambrano','2001-07-13',
+'admin@gmail.com','ac9689e2272427085e35b9d3e3e8bed88cb3434828b43b86fc0596cad4c6e270', localtimestamp(),true,1);
+
+insert into estadoEntrega values
+(null,"Pendiente"),
+(null,"Entregado"),
+(null,"No entregado"),
+(null,"Entregado tarde");

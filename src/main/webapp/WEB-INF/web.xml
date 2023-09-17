@@ -10,7 +10,7 @@
     <welcome-file>default.htm</welcome-file>
   </welcome-file-list>
   
-<!--
+
 <filter>
 	<filter-name>AuthFilter</filter-name>
 	<filter-class>filter.AuthFilter</filter-class>
@@ -67,12 +67,39 @@
 <dispatcher>REQUEST</dispatcher>
 </filter-mapping>
 
+
+
+
 <filter-mapping>
 	<filter-name>AuthFilter</filter-name>
-	<url-pattern>/PrestamoServlet/*</url-pattern>
+	<url-pattern>/PrestamoServlet/listado/</url-pattern>
 	<dispatcher>FORWARD</dispatcher>
 <dispatcher>REQUEST</dispatcher>
 </filter-mapping>
+
+<filter-mapping>
+	<filter-name>AuthFilter</filter-name>
+	<url-pattern>/PrestamoServlet/reserva/</url-pattern>
+	<dispatcher>FORWARD</dispatcher>
+<dispatcher>REQUEST</dispatcher>
+</filter-mapping>
+
+<filter-mapping>
+	<filter-name>AuthFilter</filter-name>
+	<url-pattern>/PrestamoServlet/entrega/</url-pattern>
+	<dispatcher>FORWARD</dispatcher>
+<dispatcher>REQUEST</dispatcher>
+</filter-mapping>
+
+
+<filter-mapping>
+	<filter-name>AuthFilter</filter-name>
+	<url-pattern>/PrestamoServlet/consultaDeuda/</url-pattern>
+	<dispatcher>FORWARD</dispatcher>
+<dispatcher>REQUEST</dispatcher>
+</filter-mapping>
+
+
 
 <filter-mapping>
 	<filter-name>AuthFilter</filter-name>
@@ -106,7 +133,13 @@
 	<url-pattern>/login.jsp</url-pattern>
 </filter-mapping>
 
-  -->
+<filter-mapping>
+	<filter-name>LoginFilter</filter-name>
+	<url-pattern>/PrestamoServlet/listadoUsuario/</url-pattern>
+	<dispatcher>FORWARD</dispatcher>
+<dispatcher>REQUEST</dispatcher>
+</filter-mapping>
+
   
 
 

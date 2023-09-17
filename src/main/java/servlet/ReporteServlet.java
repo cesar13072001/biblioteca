@@ -79,7 +79,7 @@ public class ReporteServlet extends HttpServlet {
     	}
     	if(categoria.equals("prestamos")) {
     		daoPrestamo = daoFactory.getPrestamoDAO();
-    		prestamos = daoPrestamo.listadoPrestmamos();
+    		prestamos = daoPrestamo.listadoPrestamos();
     		datSource= new JRBeanCollectionDataSource(prestamos);
     	}
     	

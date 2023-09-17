@@ -10,12 +10,15 @@ public interface PrestamoDAO {
 
 	public int buscarDeudasUsuario(String idUsuario);
 
-	public List<Prestamo> listadoPrestmamos();
+	public List<Prestamo> listadoPrestamos();
 
 	public Prestamo entregarLibro(int idPrestamo, String fechaEntrega, int idEstado);
 
 	public int actualizarEstadoNoEntregado(int idPrestamo);
 
 	public List<Integer> listarPrestamosAtrasados();
+
+	public List<Prestamo> listadoPrestamosUsuario(String idUsuario);
+
 
 }

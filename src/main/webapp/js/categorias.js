@@ -8,25 +8,6 @@ var categoria;
 
 
 
-listado2();
-function listado2() {
-  $.ajax({
-    url: "./CategoriaServlet?type=listar",
-    type: "GET",
-    dataType: "json",
-    contentType: "application/json; charset=utf-8",
-    //async: false,
-    success: function (data) {
-	  console.log(data);
-    },
-    error: function (error) {
-      console.log(error);
-    },
-    beforeSend: function () {},
-  });
-}
-
-
 listado();
 
 function listado() {
@@ -96,7 +77,6 @@ function agregarCategoria() {
     data: {nombre : $("#nombres").val()},
     dataType: "json",
     success: function (data) {
-	  console.log(data);
       if (data != null) {
 		tabledata.row.add(data).draw(false);
         $("#staticBackdrop").modal("hide");
@@ -161,7 +141,6 @@ function buscarCategoria(id) {
     dataType: "json",
     async: false,
     success: function (data) {
-	  console.log(data);
       categoria = data;
     },
     error: function (error) {
@@ -189,7 +168,6 @@ function eliminarCategoria(id) {
     },
     beforeSend: function () {},
   });
-  console.log(salida);
   return salida;
 }
 

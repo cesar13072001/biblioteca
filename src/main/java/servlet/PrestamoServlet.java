@@ -42,6 +42,9 @@ public class PrestamoServlet extends HttpServlet {
     	if(type.equals("listar")) {
     		listado(request, response);
     	}
+    	if(type.equals("listarUsuario")) {
+    		listadoUsuario(request, response);
+    	}
     	if(type.equals("reserva")) {
     		reserva(request, response);
     	}
@@ -64,7 +67,7 @@ public class PrestamoServlet extends HttpServlet {
     	HashMap<String, Object> respuesta = null;
 		
     	try {
-			prestamos = daoPrestamo.listadoPrestmamos();
+			prestamos = daoPrestamo.listadoPrestamos();
 			respuesta = new HashMap<String, Object>();
     		respuesta.put("data", prestamos);
 			
@@ -73,13 +76,41 @@ public class PrestamoServlet extends HttpServlet {
 		}
     	
 		
-		System.out.println();
     	Gson gson = new Gson();
     	PrintWriter out = response.getWriter();
 		out.print(gson.toJson(respuesta));
 		out.flush();
 		out.close();
     }
+    
+    
+    protected void listadoUsuario(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    	String idUsuario = request.getParameter("idUsuario");
+    	
+    	DAOFactory daoFactory = DAOFactory.getDAOFactory(DAOFactory.MYSQL);
+		PrestamoDAO daoPrestamo = daoFactory.getPrestamoDAO();
+		
+		List<Prestamo> prestamos = new ArrayList<Prestamo>();
+    	
+    	HashMap<String, Object> respuesta = null;
+		
+    	try {
+			prestamos = daoPrestamo.listadoPrestamosUsuario(idUsuario);
+			respuesta = new HashMap<String, Object>();
+    		respuesta.put("data", prestamos);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+    	
+		
+    	Gson gson = new Gson();
+    	PrintWriter out = response.getWriter();
+		out.print(gson.toJson(respuesta));
+		out.flush();
+		out.close();
+    }
+    
     
     
     protected void reserva(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -113,7 +144,6 @@ public class PrestamoServlet extends HttpServlet {
     	
     	
     	
-    	System.out.println();
     	Gson gson = new Gson();
     	PrintWriter out = response.getWriter();
 		out.print(gson.toJson(salida));
@@ -151,7 +181,6 @@ public class PrestamoServlet extends HttpServlet {
 			e.printStackTrace();
 		}
 		
-		System.out.println();
     	Gson gson = new Gson();
     	PrintWriter out = response.getWriter();
 		out.print(gson.toJson(prestamo));
@@ -181,7 +210,6 @@ public class PrestamoServlet extends HttpServlet {
 			e.printStackTrace();
 		}
 		
-		System.out.println();
     	Gson gson = new Gson();
     	PrintWriter out = response.getWriter();
 		out.print(gson.toJson(respuesta));

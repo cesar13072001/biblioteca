@@ -66,9 +66,7 @@ public class AuthServlet extends HttpServlet {
     	try {
     	Encriptador encriptador = new Encriptador();   	
     	usuario = daoAuth.loginUsuario(email, encriptador.password(password)); 
-    	System.out.println(usuario);
     	if(usuario != null) {
-    		System.out.println("usuario no es null");
     		HttpSession sesionUsuario = request.getSession();
         	sesionUsuario.setAttribute("usuario", usuario);
         	respuesta = new HashMap<String, Object>();
@@ -127,7 +125,7 @@ public class AuthServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		System.out.println("Estoy en el post");
+
 		doGet(request, response);
 	}
 

@@ -18,7 +18,7 @@ public class MySqlPrestamoDAO implements PrestamoDAO{
 	
 	
 	@Override
-	public List<Prestamo> listadoPrestmamos(){
+	public List<Prestamo> listadoPrestamos(){
 		List<Prestamo> prestamos = new ArrayList<Prestamo>();	
 		Connection cn = null;
 		PreparedStatement pstm = null;
@@ -83,6 +83,73 @@ public class MySqlPrestamoDAO implements PrestamoDAO{
 		return prestamos;
 	}
 	
+	
+	@Override
+	public List<Prestamo> listadoPrestamosUsuario(String idUsuario){
+		List<Prestamo> prestamos = new ArrayList<Prestamo>();	
+		Connection cn = null;
+		PreparedStatement pstm = null;
+		ResultSet rs = null;
+		
+		DAOFactory daoFactory = DAOFactory.getDAOFactory(DAOFactory.MYSQL);
+		
+		UsuarioDAO daoUsuario = null;
+		LibroDAO daoLibro = null;
+		EstadoPrestamoDAO daoEstadoPrestamo = null;
+		
+		try {
+			
+			cn = MysqlDBConexion.getConexion();
+			
+			String sql = "select * from prestamo where idUsuario = ?";
+			pstm = cn.prepareStatement(sql);
+			pstm.setString(1, idUsuario);
+			rs = pstm.executeQuery();
+			
+			
+			daoUsuario = daoFactory.getUsuarioDAO();
+			daoLibro = daoFactory.getLibroDAO();
+			daoEstadoPrestamo = daoFactory.getEstadoPrestamoDAO();
+			
+			while (rs.next()) {
+				
+				
+				Prestamo prestamo = new Prestamo();
+				prestamo.setIdPrestamo(rs.getInt(1));
+				prestamo.setFechaPrestamo(rs.getString(2));
+				prestamo.setFechaVencimiento(rs.getString(3));
+				prestamo.setFechaEntrega(rs.getString(4) == null ? "**Sin entrega**" : rs.getString(4));
+				prestamo.setIdEstado(rs.getInt(5));
+				prestamo.setIdUsuario(rs.getString(6));
+				prestamo.setIdLibro(rs.getString(7));
+				
+				prestamo.setUsuario(daoUsuario.buscarUsuario(prestamo.getIdUsuario()));
+				prestamo.setLibro(daoLibro.buscarLibro(prestamo.getIdLibro()));
+				prestamo.setEstadoPrestamo(daoEstadoPrestamo.buscarEstadoPrestamo(prestamo.getIdEstado()));
+				
+				prestamos.add(prestamo);
+			}
+			
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		finally {
+			try {
+				
+				if(rs!=null) rs.close();
+				if(pstm!=null) pstm.close();
+				if(cn!=null) cn.close();
+				
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		
+		
+		return prestamos;
+	}
 	
 	
 	

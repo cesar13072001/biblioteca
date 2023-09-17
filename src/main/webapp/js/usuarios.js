@@ -36,7 +36,6 @@ function agregarUsuario() {
     data: datos,
     dataType: "json",
     success: function (data) {
-		console.log(data);
       if (data != null) {
 		tabledata.row.add(data).draw(false);
         $("#staticBackdrop").modal("hide");
@@ -110,10 +109,7 @@ function listado() {
     ajax: {
       url: "./UsuarioServlet?type=listar",
       type: "GET",
-      dataType: "json",
-      error: function(error){
-		 return [];
-	  }
+      dataType: "json"
     },
     columns: [
       { data: "idUsuario" },
@@ -177,7 +173,6 @@ function buscarUsuario(id) {
     dataType: "json",
     async: false,
     success: function (data) {
-	  console.log(data);
       usuario = data;
     },
     error: function (error) {
@@ -204,7 +199,6 @@ function cambiarEstadoUsuario(id, estado) {
     },
     beforeSend: function () {},
   });
-  console.log(salida);
   return salida;
 }
 
@@ -225,7 +219,6 @@ function eliminarUsuario(id) {
     },
     beforeSend: function () {},
   });
-  console.log(salida);
   return salida;
 }
 
@@ -254,7 +247,6 @@ $("#tabla tbody").on("change", "#switchActivo", function () {
   let idUsuario = tabledata.row(filaSeleccionada).data()["idUsuario"];
   var checked = this.checked;
   this.checked = !checked;
-  console.log(checked);
 
   var opcion = checked == true ? "activará" : "desactivará";
 

@@ -6,11 +6,10 @@
 		   type: "POST",
 		   url: './AuthServlet',
 		   data: {type: "login",email: email, password: password},
+		   dataType: "json",
 		   success: function(data){
-			   var s =  $.parseJSON(data);
-			   console.log(s);
-			   if(s != null){
-				   mostrarAlerta(0,"Bienvenido de vuelta");
+			   if(data != null){
+				  mostrarAlerta(0,"Bienvenido de vuelta");
 				   window.location.replace("./"); 
 
 			   }

@@ -1,6 +1,7 @@
 var usuario;
 var libro;
 var fila;
+var tabledata;
 
 listado();
 
@@ -27,24 +28,6 @@ function formularioUsuario(){
 		mostrarAlerta(1,"El usuario esta inhabilitado");
 		formUsuarioInvalido();
 	}
-}
-
-listado2();
-
-function listado2() {
-  $.ajax({
-    url: "./PrestamoServlet?type=listar",
-    type: "GET",
-    dataType: "json",
-    //async: false,
-    success: function (data) {
-	  console.log(data);
-    },
-    error: function (error) {
-      console.log(error);
-    },
-    beforeSend: function () {},
-  });
 }
 
 
@@ -155,7 +138,6 @@ function buscarUsuario(id) {
     dataType: "json",
     async: false,
     success: function (data) {
-	  console.log(data);
       usuario = data;
     },
     error: function (error) {
@@ -174,7 +156,6 @@ function consultaDeuda(id) {
     dataType: "json",
     async: false,
     success: function (data) {
-	  console.log(data);
       salida = data.resultado;
     },
     error: function (error) {
@@ -236,7 +217,6 @@ function buscarLibro(id) {
     dataType: "json",
     async: false,
     success: function (data) {
-	  console.log(data);
       libro = data;
     },
     error: function (error) {
@@ -261,7 +241,6 @@ function accionFormulario(){
     type: "POST",
     dataType: "json",
     success: function (data) {
-	  console.log(data); 
 	  if (data != null) {
 		tabledata.row.add(data).draw(false);
         $("#staticBackdrop").modal("hide");
@@ -316,7 +295,6 @@ function desactivarBotones(estado){
 
 
 function entregarLibro(idPrestamo, idEstado, idLibro){
-	console.log({idPrestamo, idEstado});
 	$.ajax({
     url: "./PrestamoServlet?type=entrega",
     data: {idPrestamo, idEstado, idLibro},
@@ -325,7 +303,6 @@ function entregarLibro(idPrestamo, idEstado, idLibro){
     //async: false,
     success: function (data) {
 	  if(data != null){
-		console.log(data);
 	  let prestamo = tabledata.row(fila).data();
 	  prestamo.idEstado = data.idEstado;
 	  prestamo.estadoPrestamo = data.estadoPrestamo;

@@ -124,7 +124,6 @@ function agregarLibro() {
     data: datos,
     dataType: "json",
     success: function (data) {
-		console.log(data);
       if (data != null) {
 		tabledata.row.add(data).draw(false);
         $("#staticBackdrop").modal("hide");
@@ -152,7 +151,6 @@ function buscarLibro(id) {
     dataType: "json",
     async: false,
     success: function (data) {
-	  console.log(data);
       libro = data;
     },
     error: function (error) {
@@ -180,7 +178,6 @@ function editarLibro() {
     dataType: "json",
     success: function (data) {
       if (data != null) {
-		  console.log(data);
         $("#staticBackdrop").modal("hide");
         mostrarAlerta(0, "Libro editado correctamente");
         tabledata.row(fila).data(data).draw(false);
@@ -255,7 +252,6 @@ function cambiarEstadoLibro(id, estado) {
     },
     beforeSend: function () {},
   });
-  console.log(salida);
   return salida;
 }
 
@@ -276,7 +272,6 @@ function eliminarLibro(id) {
     },
     beforeSend: function () {},
   });
-  console.log(salida);
   return salida;
 }
 
@@ -300,7 +295,6 @@ $("#tabla tbody").on("change", "#switchActivo", function () {
   let idLibro = tabledata.row(filaSeleccionada).data()["idLibro"];
   var checked = this.checked;
   this.checked = !checked;
-  console.log(checked);
 
   var opcion = checked == true ? "activará" : "desactivará";
 
