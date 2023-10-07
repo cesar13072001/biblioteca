@@ -1,5 +1,5 @@
-create database biblioteca;
-use biblioteca;
+create database bibliotecacaz;
+use bibliotecacaz;
 
 create table rol(
 idRol int primary key,
