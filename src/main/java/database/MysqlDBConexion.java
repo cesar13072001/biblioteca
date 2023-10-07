@@ -11,8 +11,8 @@ public class MysqlDBConexion {
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver").getDeclaredConstructor().newInstance();
 			String url = "jdbc:mysql://localhost:3306/bibliotecacaz?useSSL=false&useTimezone=true&serverTimezone=UTC";
-			String usr = "root"; //usuario
-			String psw = "mysql"; //password
+			String usr = ""; //usuario
+			String psw = ""; //passowrd
 			con = DriverManager.getConnection(url, usr, psw);
 		} catch (ClassNotFoundException e) {
 			System.out.println("Error >> Driver no Instalado!!" + e.getMessage());

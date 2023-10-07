@@ -13,8 +13,8 @@ import javax.mail.internet.MimeMessage;
 public class EnviarCorreo {
 	
 	public void correo(String correo, String password) {
-		String emailEnviador = "cesardeveloper2001@gmail.com";
-		String passwordEnviador = "kwrvkdasupevrbcn";
+		String emailEnviador = ""; //tu correo
+		String passwordEnviador = ""; //tu contraseña
 		
 		String mensaje= "<h1>Registro biblioteca</h1>"
 				+ "<p>Gracias por registrarte en la biblioteca</p>"
