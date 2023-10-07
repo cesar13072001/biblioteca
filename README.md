@@ -26,8 +26,8 @@ Para implementar este proyecto siga los siguientes pasos:
   7. Levante la aplicación usando TOMCAT 9.
      
   11. Logueese en la aplicación con los siguientes datos de administrador:
-  Correo: admin@gmail.com
-  Password: admin1234
+  - Correo: admin@gmail.com
+  - Password: admin1234
 
 ## 🛠 Herrmientas
 - JAVA EE
@@ -41,8 +41,8 @@ Para implementar este proyecto siga los siguientes pasos:
 Puede probar la aplicación en la siguiente dirección:
 https://caz-biblioteca-b9700ebc2696.herokuapp.com/
 
-Correo: admin@gmail.com
-Password: admin1234
+- Correo: admin@gmail.com
+- Password: admin1234
 
 Usuario
 
