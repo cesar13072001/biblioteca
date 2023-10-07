@@ -25,7 +25,7 @@ public class MySqlRolDAO implements RolDAO{
 			
 			cn = MysqlDBConexion.getConexion();
 			
-			String sql = "select * from ROL";
+			String sql = "select * from rol";
 			pstm = cn.prepareStatement(sql);
 			rs = pstm.executeQuery();
 			

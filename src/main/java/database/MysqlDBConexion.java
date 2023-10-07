@@ -10,9 +10,9 @@ public class MysqlDBConexion {
 		Connection con = null;
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver").getDeclaredConstructor().newInstance();
-			String url = "jdbc:mysql://localhost:3306/biblioteca?useSSL=false&useTimezone=true&serverTimezone=UTC";
-			String usr = "root";
-			String psw = "mysql";
+			String url = "jdbc:mysql://localhost:3306/bibliotecacaz?useSSL=false&useTimezone=true&serverTimezone=UTC";
+			String usr = "root"; //usuario
+			String psw = "mysql"; //password
 			con = DriverManager.getConnection(url, usr, psw);
 		} catch (ClassNotFoundException e) {
 			System.out.println("Error >> Driver no Instalado!!" + e.getMessage());
