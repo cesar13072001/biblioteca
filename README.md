@@ -1,5 +1,5 @@
 # biblioteca
-Sistema de biblioteca hecho en JAVA EE
+Sistema de biblioteca hecho en JAVA EE 8
 
 ## Despliegue
 
