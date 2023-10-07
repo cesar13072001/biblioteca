@@ -45,7 +45,6 @@ https://caz-biblioteca-b9700ebc2696.herokuapp.com/
 - Correo: admin@gmail.com
 - Password: admin1234
 
-Usuario
 
 # ¡Hola, soy Cesar Aguilar! 👋
 
